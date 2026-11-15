@@ -1,0 +1,19 @@
+// slus_013.78: names from our own RE (psx-spider-man native owners and header constants).
+crt0_start = 0x80093C68; // type:func
+main = 0x80031F54; // type:func
+Overlay_load = 0x8001E8E4; // type:func
+Overlay_relocate = 0x8001EEF0; // type:func
+Frame_submit = 0x8006BE98; // type:func
+Heap_alloc = 0x8007032C; // type:func
+Pad_init = 0x80076050; // type:func
+Pad_copyRecords = 0x80076498; // type:func
+DrawOTag = 0x8008E574; // type:func
+VSync = 0x80091604; // type:func
+PadInitDirect = 0x800960AC; // type:func
+libcInit = 0x800988B0; // type:func
+Dma_dispatch = 0x8009CFF4; // type:func
+DMACallback = 0x8009D174; // type:func
+Pad_slot0Buffer = 0x800B2CC0;
+Pad_slot1Buffer = 0x800B2CE2;
+Libetc_vblankCount = 0x800C082C;
+Dma_callbackTable = 0x800C12B8;
