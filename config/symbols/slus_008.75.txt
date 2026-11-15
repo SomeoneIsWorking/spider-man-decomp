@@ -2,6 +2,11 @@
 crt0_start = 0x8008739C; // type:func
 main = 0x8002C354; // type:func
 GameLoop_run = 0x8002C174; // type:func
+GameLoop_idleWaitReturn = 0x8002C274; // type:label
+GameLoop_frameWaitReturn = 0x8002C294; // type:label
+OT_compact = 0x8007F930; // type:func
+Sys_service = 0x8005E234; // type:func
+DrawSync = 0x800819A4; // type:func
 Render_walk = 0x8002BD5C; // type:func
 Frame_begin = 0x800612B8; // type:func
 Frame_submit = 0x80061308; // type:func
