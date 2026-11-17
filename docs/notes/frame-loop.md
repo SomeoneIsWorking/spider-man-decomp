@@ -22,3 +22,18 @@ One iteration:
 the VBlank callback is its only incrementer. A frame therefore lasts two fields when its work fits in one, and
 max(2, K + 1) when the work ran past K field edges: the game is designed for 30 fps. 0x80062CE0 and other readers
 of `Field_counter` scale by the field delta, so a run at one field per frame changes their rate.
+
+## Boot
+
+`Boot_init` (0x8006BF9C, main's first call) plays movie 0, then movie 1 unless a button is down
+(`Movie_play` 0x8002AA0C), reads `Field_counter` into s4, loads the shared models and fonts, then polls `Pad_read`
+(0x8006B514, call returning to 0x8006C304) until 300 fields have passed since that read or a button flag in the
+pad record at 0x800A4DF4 (+0x30, +0x40 with +0x60, +0xE0) is set. Nothing draws during the poll: it is a floor of
+five seconds under the boot loads.
+
+`Movie_play` reads the pad each movie frame and, from movie frame 30 on (`[gp+0x6AC]`), stops at a set flag at
+0x800A4ED5 or 0x800A4E25.
+
+`Movie_play` keeps `Movie_playing` (gp+0x690, 0x800B4E84) set while it runs. `Movie_fetchSector` (0x8002B3CC) sets
+`Movie_ended` (gp+0x68C, 0x800B4E80) when the fetched frame number reaches the movie's last (gp+0x6B4); the player
+then stops after that frame and runs its own teardown.
